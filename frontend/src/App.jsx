@@ -12,7 +12,10 @@ import {
   Gauge, 
   Info,
   Building2,
-  RefreshCw
+  FileCheck2,
+  Server,
+  Download,
+  FileSpreadsheet
 } from 'lucide-react';
 
 import Furnace3D from './components/Furnace3D';
@@ -20,16 +23,31 @@ import SECGauge from './components/SECGauge';
 import HoldingGuardAlert from './components/HoldingGuardAlert';
 import ToUScheduler from './components/ToUScheduler';
 import CBAMLedgerCard from './components/CBAMLedgerCard';
+import BEEPatCard from './components/BEEPatCard';
 import ControlPanel from './components/ControlPanel';
+import CertificateModal from './components/CertificateModal';
+import ModbusConfigModal from './components/ModbusConfigModal';
+import HeatHistoryTable from './components/HeatHistoryTable';
 
 export default function App() {
   const [data, setData] = useState(null);
   const [touSchedule, setTouSchedule] = useState(null);
+  const [heats, setHeats] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
   const [speed, setSpeed] = useState(12);
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [isModbusModalOpen, setIsModbusModalOpen] = useState(false);
+  const [selectedHeatForCert, setSelectedHeatForCert] = useState(null);
   const wsRef = useRef(null);
 
-  // Initial REST fetch for fallback & tariff schedule
+  // Initial REST fetch for fallback, tariff schedule, and heat history
+  const refreshHeats = () => {
+    fetch('/api/heats')
+      .then(res => res.json())
+      .then(json => setHeats(json))
+      .catch(err => console.log('Heats fetch error:', err));
+  };
+
   useEffect(() => {
     fetch('/api/status')
       .then(res => res.json())
@@ -40,6 +58,8 @@ export default function App() {
       .then(res => res.json())
       .then(json => setTouSchedule(json))
       .catch(err => console.log('Tariff fetch error:', err));
+
+    refreshHeats();
   }, []);
 
   // WebSocket real-time telemetry stream
@@ -68,7 +88,6 @@ export default function App() {
 
       ws.onclose = () => {
         setIsConnected(false);
-        // Reconnect after 2 seconds
         setTimeout(connectWs, 2000);
       };
 
@@ -95,10 +114,19 @@ export default function App() {
       });
       const result = await res.json();
       console.log('Action response:', result);
-      // Refresh status immediately
+      
       const statusRes = await fetch('/api/status');
       const statusJson = await statusRes.json();
       setData(statusJson);
+      refreshHeats();
+
+      // If action was tap, pop up certificate modal!
+      if (action === 'tap') {
+        setTimeout(() => {
+          setSelectedHeatForCert(null);
+          setIsCertModalOpen(true);
+        }, 1200);
+      }
     } catch (err) {
       console.error('Action failed:', err);
     }
@@ -118,7 +146,7 @@ export default function App() {
   };
 
   const telemetry = data?.telemetry || {
-    batch_id: 1042,
+    batch_id: 1043,
     state: "IDLE",
     temperature_c: 32,
     target_temperature_c: 1520,
@@ -143,13 +171,30 @@ export default function App() {
 
   const tariff = data?.tariff;
   const cbam = data?.cbam;
+  const pat = data?.pat;
   const mlForecast = data?.ml_forecast;
+  const modbus = data?.modbus;
+
+  // Active heat data for certificate modal
+  const activeCertHeat = selectedHeatForCert || {
+    heat_id: telemetry.batch_id,
+    weighbridge_tonnes: telemetry.batch_weight_tonnes,
+    metered_kwh: Math.max(937.5, telemetry.cumulative_kwh),
+    sec_kwh_per_t: telemetry.sec_kwh_per_tonne > 0 ? telemetry.sec_kwh_per_tonne : 625.0,
+    total_intensity_tco2: cbam?.carbon_intensity_tco2_per_t || 0.712,
+    cbam_status: cbam?.export_readiness_status || "COMPLIANT",
+    cbam_savings_inr: cbam?.cbam_savings_vs_unoptimized_inr_per_t || 7450,
+    escerts_earned: pat?.escerts_earned_per_batch || 0.193,
+    gateway_id: "SE-ECO-EDGE-4102",
+    facility_name: "Kolhapur Foundry Cluster Unit #14 (MIDC Shiroli)",
+    meter_model: modbus?.meter_model || "Schneider Electric EasyLogic™ PM5350"
+  };
 
   return (
     <div className="min-h-screen pb-12">
-      {/* Top Industrial Header */}
-      <header className="sticky top-0 z-50 bg-[#0a0e14]/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3.5">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      {/* Top Enterprise Header */}
+      <header className="sticky top-0 z-40 bg-[#0a0e14]/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#2da643] to-[#3dcd58] flex items-center justify-center shadow-[0_0_20px_rgba(61,205,88,0.4)]">
@@ -161,29 +206,44 @@ export default function App() {
                   EcoCast <span className="text-[#3dcd58]">AI</span>
                 </h1>
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#3dcd58]/15 text-[#3dcd58] border border-[#3dcd58]/30">
-                  SCHNEIDER ELECTRIC YUVA YODHA 2026
+                  SCHNEIDER EcoStruxure™ EDGE MSME GATEWAY
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Decision-Support Digital Twin for MSME Induction Furnaces • Kolhapur Foundry Cluster Benchmark
+                Decision-Support Digital Twin for Induction Furnaces • Kolhapur Foundry Cluster Benchmark
               </p>
             </div>
           </div>
 
-          {/* Right Header Status */}
-          <div className="flex items-center gap-4 text-xs font-mono">
+          {/* Header Action Buttons & Status */}
+          <div className="flex items-center gap-2.5 text-xs font-mono">
+            {/* Modbus Hardware Setup Button */}
+            <button
+              onClick={() => setIsModbusModalOpen(true)}
+              className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 flex items-center gap-1.5 transition cursor-pointer"
+            >
+              <Server className="w-3.5 h-3.5 text-sky-400" />
+              <span>{modbus?.mode === "LIVE_MODBUS" ? '🏭 Modbus-TCP Live' : '🧪 Simulation Mode'}</span>
+            </button>
+
+            {/* Certificate Modal Button */}
+            <button
+              onClick={() => {
+                setSelectedHeatForCert(null);
+                setIsCertModalOpen(true);
+              }}
+              className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold flex items-center gap-1.5 transition cursor-pointer shadow-lg shadow-emerald-950/50"
+            >
+              <FileCheck2 className="w-4 h-4" />
+              <span>Audit Certificate</span>
+            </button>
+
             {/* Live Telemetry Pill */}
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800">
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800">
               <span className={`w-2.5 h-2.5 rounded-full ${isConnected ? 'bg-emerald-400 animate-pulse' : 'bg-rose-500'}`} />
               <span className={isConnected ? 'text-emerald-400 font-semibold' : 'text-rose-400'}>
-                {isConnected ? 'MQTT / TELEMETRY LIVE' : 'CONNECTING GATEWAY...'}
+                {isConnected ? 'MQTT / 1 Hz' : 'OFFLINE'}
               </span>
-            </div>
-
-            {/* Batch ID Tag */}
-            <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">
-              <Layers className="w-3.5 h-3.5 text-slate-400" />
-              <span>Batch #{telemetry.batch_id}</span>
             </div>
           </div>
         </div>
@@ -191,7 +251,7 @@ export default function App() {
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 lg:px-8 mt-5 space-y-5">
-        {/* Holding Loss Alarm Banner (The core decision leak) */}
+        {/* Holding Loss Alarm Banner (Core MSME Decision Leak) */}
         <HoldingGuardAlert
           isHolding={telemetry.is_holding_alert}
           holdingMinutes={telemetry.holding_minutes}
@@ -289,11 +349,25 @@ export default function App() {
             <CBAMLedgerCard
               cbamData={cbam}
             />
+
+            {/* BEE PAT Scheme Card */}
+            <BEEPatCard
+              patData={pat}
+            />
           </div>
         </div>
 
+        {/* Historical Heat Audit Ledger Table */}
+        <HeatHistoryTable
+          heats={heats}
+          onSelectHeat={(h) => {
+            setSelectedHeatForCert(h);
+            setIsCertModalOpen(true);
+          }}
+        />
+
         {/* Bottom Kolhapur Cluster & Schneider Impact Footer */}
-        <section className="glass-panel p-5 mt-6 border-slate-800/80 bg-gradient-to-r from-slate-900/90 to-[#0e1624]">
+        <section className="glass-panel p-5 border-slate-800/80 bg-gradient-to-r from-slate-900/90 to-[#0e1624]">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400">
@@ -323,6 +397,23 @@ export default function App() {
           </div>
         </section>
       </main>
+
+      {/* Verified Audit Certificate Modal */}
+      <CertificateModal
+        isOpen={isCertModalOpen}
+        onClose={() => setIsCertModalOpen(false)}
+        heatData={activeCertHeat}
+      />
+
+      {/* Modbus Hardware Configuration Modal */}
+      <ModbusConfigModal
+        isOpen={isModbusModalOpen}
+        onClose={() => setIsModbusModalOpen(false)}
+        modbusStatus={modbus}
+        onSaveConfig={(updated) => {
+          setData(prev => prev ? { ...prev, modbus: updated } : prev);
+        }}
+      />
     </div>
   );
 }
