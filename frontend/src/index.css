@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0a0e14;
+  --bg-card: #111722;
+  --bg-card-hover: #161f2e;
+  --border-subtle: #1e293b;
+  --border-active: #334155;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --schneider-green: #3dcd58;
+  --schneider-green-glow: rgba(61, 205, 88, 0.25);
+  --accent-cyan: #06b6d4;
+  --accent-amber: #f59e0b;
+  --accent-red: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+code, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Animations */
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+    border-color: rgba(239, 68, 68, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
+    border-color: rgba(239, 68, 68, 1);
+  }
+}
+
+.animate-pulse-red {
+  animation: pulse-red 2s infinite ease-in-out;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(61, 205, 88, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(61, 205, 88, 0.5);
+  }
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2.5s infinite ease-in-out;
+}
+
+.glass-panel {
+  background: rgba(17, 23, 34, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+}
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: 'JetBrains Mono', monospace;
+}
