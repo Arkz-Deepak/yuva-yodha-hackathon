@@ -187,14 +187,14 @@ export default function App() {
     escerts_earned: pat?.escerts_earned_per_batch || 0.193,
     gateway_id: "SE-ECO-EDGE-4102",
     facility_name: "Kolhapur Foundry Cluster Unit #14 (MIDC Shiroli)",
-    meter_model: modbus?.meter_model || "Schneider Electric EasyLogic™ PM5350"
+    meter_model: modbus?.meter_model || "Schneider Electric EasyLogic PM5350"
   };
 
   return (
-    <div className="min-h-screen pb-12">
+    <div className="min-h-screen w-full flex flex-col items-center bg-[#0a0e14] pb-12">
       {/* Top Enterprise Header */}
-      <header className="sticky top-0 z-40 bg-[#0a0e14]/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      <header className="sticky top-0 z-40 w-full bg-[#0a0e14]/95 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3 flex justify-center">
+        <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-3">
           {/* Logo & Brand */}
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#2da643] to-[#3dcd58] flex items-center justify-center shadow-[0_0_20px_rgba(61,205,88,0.4)]">
@@ -206,7 +206,7 @@ export default function App() {
                   EcoCast <span className="text-[#3dcd58]">AI</span>
                 </h1>
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#3dcd58]/15 text-[#3dcd58] border border-[#3dcd58]/30">
-                  SCHNEIDER EcoStruxure™ EDGE MSME GATEWAY
+                  SCHNEIDER EcoStruxure(TM) EDGE MSME GATEWAY
                 </span>
               </div>
               <p className="text-xs text-slate-400">
@@ -250,7 +250,7 @@ export default function App() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 lg:px-8 mt-5 space-y-5">
+      <main className="w-full max-w-7xl px-4 lg:px-8 mt-5 space-y-5 flex-1">
         {/* Holding Loss Alarm Banner (Core MSME Decision Leak) */}
         <HoldingGuardAlert
           isHolding={telemetry.is_holding_alert}

@@ -1,6 +1,7 @@
 """
 Digitally Stamped EU CBAM & BEE PAT Export Compliance Audit Certificate Generator
 Generates tamper-resistant, verifiable PDF & CSV audit certificates for each foundry heat.
+Uses standard ASCII & Type-1 font-safe glyphs to ensure zero black boxes/character errors in PDF viewers.
 """
 
 import io
@@ -12,12 +13,11 @@ from typing import Dict, Any
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
-from reportlab.lib.units import inch, cm
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, KeepTogether
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
 
 class CertificateGenerator:
     def __init__(self, export_dir: str = "exports"):
@@ -50,13 +50,12 @@ class CertificateGenerator:
 
         styles = getSampleStyleSheet()
         
-        # Custom styles
         title_style = ParagraphStyle(
             'CertTitle',
             parent=styles['Normal'],
             fontName='Helvetica-Bold',
-            fontSize=18,
-            leading=22,
+            fontSize=16,
+            leading=20,
             textColor=colors.HexColor('#0f172a'),
             alignment=TA_CENTER
         )
@@ -65,8 +64,8 @@ class CertificateGenerator:
             'CertSubTitle',
             parent=styles['Normal'],
             fontName='Helvetica-Bold',
-            fontSize=10,
-            leading=14,
+            fontSize=9,
+            leading=13,
             textColor=colors.HexColor('#16a34a'),  # Schneider Green
             alignment=TA_CENTER
         )
@@ -75,8 +74,8 @@ class CertificateGenerator:
             'CertBody',
             parent=styles['Normal'],
             fontName='Helvetica',
-            fontSize=9,
-            leading=13,
+            fontSize=8.5,
+            leading=12,
             textColor=colors.HexColor('#334155')
         )
 
@@ -84,19 +83,9 @@ class CertificateGenerator:
             'CertFormula',
             parent=styles['Normal'],
             fontName='Courier-Bold',
-            fontSize=9,
-            leading=13,
+            fontSize=8.5,
+            leading=12,
             textColor=colors.HexColor('#0f172a'),
-            alignment=TA_CENTER
-        )
-
-        hash_style = ParagraphStyle(
-            'CertHash',
-            parent=styles['Normal'],
-            fontName='Courier',
-            fontSize=7,
-            leading=9,
-            textColor=colors.HexColor('#64748b'),
             alignment=TA_CENTER
         )
 
@@ -105,29 +94,29 @@ class CertificateGenerator:
         # 1. Header Banner
         header_data = [
             [
-                Paragraph("<b>SCHNEIDER ELECTRIC EcoStruxure™ EDGE GATEWAY</b><br/><font size='8' color='#64748b'>Industrial Power & Process Co-Optimization System</font>", body_style),
-                Paragraph("<b>EU CBAM & BEE PAT COMPLIANCE AUDIT</b><br/><font size='8' color='#16a34a'>FORM CA-26: VERIFIED HEAT CERTIFICATE</font>", ParagraphStyle('HRight', parent=body_style, alignment=TA_RIGHT))
+                Paragraph("<b>SCHNEIDER ELECTRIC EcoStruxure(TM) EDGE GATEWAY</b><br/><font size='7.5' color='#64748b'>Industrial Power and Process Co-Optimization System</font>", body_style),
+                Paragraph("<b>EU CBAM and BEE PAT COMPLIANCE AUDIT</b><br/><font size='7.5' color='#16a34a'>FORM CA-26: VERIFIED HEAT CERTIFICATE</font>", ParagraphStyle('HRight', parent=body_style, alignment=TA_RIGHT))
             ]
         ]
         header_table = Table(header_data, colWidths=[260, 260])
         header_table.setStyle(TableStyle([
             ('VALIGN', (0,0), (-1,-1), 'TOP'),
-            ('BOTTOMPADDING', (0,0), (-1,-1), 8)
+            ('BOTTOMPADDING', (0,0), (-1,-1), 6)
         ]))
         elements.append(header_table)
-        elements.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#22c55e'), spaceBefore=2, spaceAfter=12))
+        elements.append(HRFlowable(width="100%", thickness=1.5, color=colors.HexColor('#22c55e'), spaceBefore=2, spaceAfter=10))
 
         # 2. Certificate Title
         elements.append(Paragraph("DIGITALLY STAMPED HEAT COMPLIANCE CERTIFICATE", title_style))
-        elements.append(Paragraph("Specific Energy Consumption & Carbon Border Adjustment Mechanism (CBAM) Audit", subtitle_style))
-        elements.append(Spacer(1, 14))
+        elements.append(Paragraph("Specific Energy Consumption (SEC) and Carbon Border Adjustment Mechanism (CBAM) Audit", subtitle_style))
+        elements.append(Spacer(1, 10))
 
         # 3. Heat Metadata Table
         heat_id = str(heat_data.get('heat_id', '1043'))
-        timestamp = heat_data.get('timestamp', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-        facility = heat_data.get('facility_name', 'Kolhapur Foundry Cluster Unit #14 (MIDC Shiroli)')
-        gateway_id = heat_data.get('gateway_id', 'SE-ECO-EDGE-4102')
-        meter_model = heat_data.get('meter_model', 'Schneider Electric EasyLogic™ PM5350 (Class 0.5S)')
+        timestamp = str(heat_data.get('timestamp', datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+        facility = str(heat_data.get('facility_name', 'Kolhapur Foundry Cluster Unit #14 (MIDC Shiroli)'))
+        gateway_id = str(heat_data.get('gateway_id', 'SE-ECO-EDGE-4102'))
+        meter_model = str(heat_data.get('meter_model', 'Schneider Electric EasyLogic PM5350 (Class 0.5S)'))
         weighbridge_tonnes = float(heat_data.get('weighbridge_tonnes', 1.50))
         metered_kwh = float(heat_data.get('metered_kwh', 937.5))
         sec_kwh_per_t = metered_kwh / weighbridge_tonnes if weighbridge_tonnes > 0 else 0.0
@@ -142,37 +131,35 @@ class CertificateGenerator:
         meta_table.setStyle(TableStyle([
             ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f8fafc')),
             ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#cbd5e1')),
-            ('TOPPADDING', (0,0), (-1,-1), 5),
-            ('BOTTOMPADDING', (0,0), (-1,-1), 5),
+            ('TOPPADDING', (0,0), (-1,-1), 4),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 4),
             ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ]))
         elements.append(meta_table)
-        elements.append(Spacer(1, 14))
+        elements.append(Spacer(1, 10))
 
         # 4. Mandatory Statutory Equations Box
         formula_text = (
-            "<b>STATUTORY MEASUREMENT & AUDIT METHODOLOGY</b><br/><br/>"
+            "<b>STATUTORY MEASUREMENT AND AUDIT METHODOLOGY</b><br/><br/>"
             "Specific Energy Consumption (SEC) = <b>Metered Total kWh / Weighbridge Net Tonnes</b> = "
-            f"<b>{metered_kwh:.1f} / {weighbridge_tonnes:.3f} = {sec_kwh_per_t:.1f} kWh/t</b><br/><br/>"
-            "Embodied Scope 2 Carbon = <b>SEC × 0.82 kg CO₂/kWh</b> (CEA Baseline) = "
-            f"<b>{sec_kwh_per_t:.1f} × 0.82 = {(sec_kwh_per_t * 0.82):.1f} kg CO₂/tonne</b>"
+            f"<b>{metered_kwh:.1f} / {weighbridge_tonnes:.3f} = {sec_kwh_per_t:.1f} kWh/tonne</b><br/><br/>"
+            "Embodied Scope 2 Carbon = <b>SEC x 0.82 kg CO2/kWh</b> (CEA India Baseline) = "
+            f"<b>{sec_kwh_per_t:.1f} x 0.82 = {(sec_kwh_per_t * 0.82):.1f} kg CO2/tonne</b>"
         )
         formula_box = Table([[Paragraph(formula_text, formula_style)]], colWidths=[520])
         formula_box.setStyle(TableStyle([
             ('BACKGROUND', (0,0), (0,0), colors.HexColor('#ecfdf5')),
             ('BOX', (0,0), (0,0), 1, colors.HexColor('#10b981')),
-            ('TOPPADDING', (0,0), (0,0), 10),
-            ('BOTTOMPADDING', (0,0), (0,0), 10),
-            ('LEFTPADDING', (0,0), (0,0), 14),
-            ('RIGHTPADDING', (0,0), (0,0), 14),
+            ('TOPPADDING', (0,0), (0,0), 8),
+            ('BOTTOMPADDING', (0,0), (0,0), 8),
+            ('LEFTPADDING', (0,0), (0,0), 12),
+            ('RIGHTPADDING', (0,0), (0,0), 12),
         ]))
         elements.append(formula_box)
-        elements.append(Spacer(1, 14))
+        elements.append(Spacer(1, 10))
 
         # 5. CBAM & BEE PAT Benchmark Evaluation Matrix
-        # Scope 2 intensity in tCO2/t
         scope2_intensity_tco2 = (sec_kwh_per_t * 0.82) / 1000.0
-        # Estimated total gate-to-gate intensity (Scope 1 raw materials + Scope 2 + auxiliary)
         total_intensity_tco2 = scope2_intensity_tco2 / 0.72
         eu_target_tco2 = 1.50
         india_baseline_tco2 = 2.50
@@ -198,31 +185,31 @@ class CertificateGenerator:
                 Paragraph("<b>Audit Dimension</b>", body_style),
                 Paragraph("<b>Measured Heat Value</b>", body_style),
                 Paragraph("<b>Statutory Benchmark</b>", body_style),
-                Paragraph("<b>Compliance & Economic Result</b>", body_style)
+                Paragraph("<b>Compliance and Economic Result</b>", body_style)
             ],
             [
-                Paragraph("<b>Specific Energy Consumption (SEC)</b>", body_style),
-                Paragraph(f"<b>{sec_kwh_per_t:.1f} kWh/t</b>", body_style),
-                Paragraph("BEE Star Standard: 625.0 kWh/t<br/>Kolhapur Avg: 780.0 kWh/t", body_style),
+                Paragraph("<b>Specific Energy (SEC)</b>", body_style),
+                Paragraph(f"<b>{sec_kwh_per_t:.1f} kWh/tonne</b>", body_style),
+                Paragraph("BEE Target: 625.0 kWh/t<br/>Kolhapur Avg: 780.0 kWh/t", body_style),
                 Paragraph(f"<font color='#16a34a'><b>VERIFIED</b> (Delta: {sec_kwh_per_t - 625.0:+.1f} kWh/t)</font>", body_style)
             ],
             [
                 Paragraph("<b>Embodied Carbon Intensity</b>", body_style),
-                Paragraph(f"<b>{total_intensity_tco2:.3f} tCO₂/t</b>", body_style),
-                Paragraph("EU CBAM Target: 1.50 tCO₂/t<br/>India Benchmark: 2.50 tCO₂/t", body_style),
+                Paragraph(f"<b>{total_intensity_tco2:.3f} tCO2/tonne</b>", body_style),
+                Paragraph("EU CBAM Target: 1.50 tCO2/t<br/>India Benchmark: 2.50 tCO2/t", body_style),
                 Paragraph(f"<b>{'COMPLIANT' if total_intensity_tco2 <= 1.8 else 'MODERATE DEFICIT'}</b>", body_style)
             ],
             [
                 Paragraph("<b>EU CBAM Duty Liability</b>", body_style),
-                Paragraph(f"<b>€{cbam_duty_eur_per_t:.2f} / tonne</b><br/>(₹{cbam_duty_inr_per_t:.0f} / tonne)", body_style),
-                Paragraph("EU ETS Allowance Rate:<br/>€79.68 / tonne CO₂", body_style),
-                Paragraph(f"<font color='#16a34a'><b>+ €{cbam_savings_eur_per_t:.2f}/t saved</b><br/>(+ ₹{cbam_savings_inr_per_t:.0f}/t export shield)</font>", body_style)
+                Paragraph(f"<b>EUR {cbam_duty_eur_per_t:.2f} / tonne</b><br/>(INR {cbam_duty_inr_per_t:.0f} / tonne)", body_style),
+                Paragraph("EU ETS Allowance Rate:<br/>EUR 79.68 / tonne CO2", body_style),
+                Paragraph(f"<font color='#16a34a'><b>+ EUR {cbam_savings_eur_per_t:.2f}/t saved</b><br/>(+ INR {cbam_savings_inr_per_t:.0f}/t export shield)</font>", body_style)
             ],
             [
                 Paragraph("<b>BEE PAT Scheme ESCerts</b>", body_style),
                 Paragraph(f"<b>{escerts:.4f} ESCerts</b>", body_style),
-                Paragraph("Energy Conservation Act, 2001<br/>1 ESCert = 1 Mtoe Saved", body_style),
-                Paragraph(f"<font color='#0284c7'><b>₹{escert_value_inr:.0f}</b> IEX Market Value</font>", body_style)
+                Paragraph("EC Act 2001 (BEE PAT Cycle)<br/>1 ESCert = 1 Mtoe Saved", body_style),
+                Paragraph(f"<font color='#0284c7'><b>INR {escert_value_inr:.0f}</b> IEX Market Value</font>", body_style)
             ]
         ]
 
@@ -232,15 +219,15 @@ class CertificateGenerator:
             ('TEXTCOLOR', (0,0), (-1,0), colors.white),
             ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#cbd5e1')),
             ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-            ('TOPPADDING', (0,0), (-1,-1), 6),
-            ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+            ('TOPPADDING', (0,0), (-1,-1), 5),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 5),
             ('BACKGROUND', (0,1), (-1,1), colors.white),
             ('BACKGROUND', (0,2), (-1,2), colors.HexColor('#f8fafc')),
             ('BACKGROUND', (0,3), (-1,3), colors.white),
             ('BACKGROUND', (0,4), (-1,4), colors.HexColor('#f8fafc')),
         ]))
         elements.append(eval_table)
-        elements.append(Spacer(1, 14))
+        elements.append(Spacer(1, 10))
 
         # 6. Digital Stamp & Tamper-Proof Cryptographic Hash
         sig_data = {
@@ -257,7 +244,7 @@ class CertificateGenerator:
             [
                 Paragraph(
                     "<b>DIGITAL AUDIT VERIFICATION SEAL</b><br/>"
-                    "Schneider Electric EcoStruxure™ Edge Gateway Cryptographic Certificate<br/>"
+                    "Schneider Electric EcoStruxure(TM) Edge Gateway Cryptographic Certificate<br/>"
                     "Verified under ISO 50001 (Energy Management) and GHG Protocol Scope 2 Guidelines.<br/>"
                     f"<b>SHA-256 Stamp:</b> <font color='#0284c7'>{digital_hash}</font>",
                     body_style
@@ -266,7 +253,7 @@ class CertificateGenerator:
                     "<b>AUTHORIZED DIGITAL SEAL</b><br/>"
                     "<b>[ DIGITALLY SIGNED ]</b><br/>"
                     f"Node: {gateway_id}<br/>"
-                    f"Status: VALID & IMMUTABLE",
+                    "Status: VALID & IMMUTABLE",
                     ParagraphStyle('StampBox', parent=body_style, alignment=TA_CENTER)
                 )
             ]
@@ -276,13 +263,12 @@ class CertificateGenerator:
             ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f1f5f9')),
             ('BOX', (0,0), (-1,-1), 1, colors.HexColor('#94a3b8')),
             ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#cbd5e1')),
-            ('TOPPADDING', (0,0), (-1,-1), 8),
-            ('BOTTOMPADDING', (0,0), (-1,-1), 8),
+            ('TOPPADDING', (0,0), (-1,-1), 6),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 6),
             ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ]))
         elements.append(stamp_table)
 
-        # Build document
         doc.build(elements)
         buffer.seek(0)
         return buffer.getvalue()
@@ -292,7 +278,6 @@ class CertificateGenerator:
         output = io.StringIO()
         writer = csv.writer(output)
         
-        # Header
         writer.writerow([
             "Heat_ID",
             "Timestamp",
@@ -317,7 +302,7 @@ class CertificateGenerator:
             sec = kwh / tonnes if tonnes > 0 else 0
             scope2_kg = sec * 0.82
             total_tco2 = (scope2_kg / 1000.0) / 0.72
-            excess = max(0.0, total_tco2 - 1.50)
+            excess = max(0.0, total_intensity_tco2 - 1.50)
             cbam_eur = excess * 79.68
             cbam_inr = cbam_eur * 93.50
             unopt_excess = max(0.0, 2.50 - 1.50)
