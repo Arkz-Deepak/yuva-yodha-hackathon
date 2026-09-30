@@ -62,5 +62,21 @@
     "escerts_earned": 0.193,
     "gateway_id": "SE-ECO-EDGE-4102",
     "status": "COMPLETED"
+  },
+  {
+    "heat_id": 1044,
+    "timestamp": "2026-09-26 23:33:57",
+    "weighbridge_tonnes": 1.5,
+    "metered_kwh": 721.61,
+    "sec_kwh_per_t": 481.1,
+    "holding_minutes": 9.8,
+    "holding_cost_inr": 154.09,
+    "scope2_intensity_tco2": 0.39466666666666667,
+    "total_intensity_tco2": 0.548,
+    "cbam_status": "EXCELLENT",
+    "cbam_savings_inr": 0.0,
+    "escerts_earned": 0.0476,
+    "gateway_id": "SE-ECO-EDGE-4102",
+    "status": "COMPLETED"
   }
 ]
