@@ -79,20 +79,29 @@ class InductionFurnaceSimulator:
 
     def trigger_holding_delay(self):
         """Simulates a shop-floor delay (e.g., ladle crane not ready, molds delayed)."""
-        if self.state in ["MELTING", "SUPERHEATING", "REFINING"]:
-            self.temperature_c = max(self.temperature_c, 1515.0)
-            self.molten_fraction = 1.0
-            self.state = "HOLDING"
-            self.active_power_kw = 135.0  # Holding equilibrium power
-            print("[EcoCast Simulator] UNPRODUCTIVE HOLDING STATE TRIGGERED - Ladle delay simulated!")
+        if self.state == "IDLE":
+            self.batch_id += 1
+            self.batch_start_time = datetime.now()
+            self.cumulative_kwh = 850.0
+        self.temperature_c = max(self.temperature_c, 1518.0)
+        self.molten_fraction = 1.0
+        self.state = "HOLDING"
+        self.active_power_kw = 138.0  # Holding equilibrium power
+        print("[EcoCast Simulator] UNPRODUCTIVE HOLDING STATE TRIGGERED - Ladle delay simulated!")
 
     def tap_furnace(self):
         """Triggers tapping into ladle."""
-        if self.temperature_c >= 1480.0:
-            self.state = "TAPPING"
-            self.active_power_kw = 25.0
-            self.lid_is_closed = False
-            print("[EcoCast Simulator] Tapping metal into transport ladle...")
+        if self.temperature_c < 1480.0:
+            # Auto-heat to tapping threshold so demo can pour anytime
+            self.temperature_c = 1520.0
+            self.molten_fraction = 1.0
+            if self.cumulative_kwh < 500:
+                self.cumulative_kwh = 937.5
+        self.state = "TAPPING"
+        self.active_power_kw = 25.0
+        self.lid_is_closed = False
+        self.tilt_angle_deg = 5.0
+        print("[EcoCast Simulator] Tapping metal into transport ladle...")
 
     def reset_to_idle(self):
         """Resets furnace to idle state."""
