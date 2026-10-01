@@ -1,0 +1,11 @@
+In India's energy-intensive MSME foundry clusters like Kolhapur, Maharashtra (300+ units producing 600,000 tonnes of automotive castings annually), electricity accounts for 30% to 50% of manufacturing costs. Induction melting furnaces consume over 70% of total plant power. Bureau of Energy Efficiency (BEE) audits reveal that 9% to 45% of energy waste stems from operational decision delays: furnaces holding 1520°C molten metal idle for 20 to 60 minutes awaiting molds (wasting 120 to 150 kWh hourly), melting during expensive evening peak tariff hours (+₹1.50/unit), and uninsulated crucible radiation leaking 32.7 kWh per batch.
+
+This challenge is urgent. Operating margins are razor-thin (4% to 8%), and the 2026 enforcement of the EU Carbon Border Adjustment Mechanism (CBAM) imposes carbon tariffs of €79.68/tCO2 on carbon-heavy metals. With Indian castings emitting ~2.1 tCO2/t versus the EU's 1.5 tCO2/t benchmark, non-compliant exporters risk losing global market access.
+
+EcoCast AI solves this as a lightweight, edge-native decision-support digital twin and "EcoStruxure Edge MSME Gateway." Connecting directly to Schneider Electric EasyLogic PM5350 and PowerLogic meters via Modbus-TCP without expensive SCADA overhauls, EcoCast delivers three core innovations:
+
+1. Physics-Informed 3D Digital Twin: Visualizes real-time crucible thermodynamics, melt incandescence, hydraulic pouring, and radiation loss alerts when the furnace lid is opened.
+2. Holding Guard & Tariff Optimizer: Ingests live telemetry to track Specific Energy Consumption against BEE benchmarks. A real-time burn ticker (₹/min and kg CO2/min) alerts operators during idle holding, while scheduling heats into night off-peak rebate windows (-₹1.50/unit).
+3. Automated Statutory Compliance: Instantly generates digitally stamped Form CA-26 audit certificates (PDF/CSV) with SHA-256 seals, verifying Scope 2 carbon intensity for EU CBAM customs clearance and quantifying BEE PAT Energy Saving Certificates (ESCerts).
+
+For a typical 2,500 tonne/year foundry, eliminating holding losses and shifting tariffs delivers a 12% to 18% electricity bill reduction—saving ₹30 to ₹45 Lakhs annually with a payback under 6 months. EcoCast bridges Schneider Electric's EcoStruxure architecture to India's 5,000+ MSME foundries, turning decarbonization into direct profitability.
