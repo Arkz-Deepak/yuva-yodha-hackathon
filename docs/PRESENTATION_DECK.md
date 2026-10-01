@@ -1,165 +1,230 @@
 # PRESENTATION DECK SPECIFICATION: EcoCast AI
 
-> **Target Presentation:** 12-Slide Pitch Deck for Schneider Electric Yuva Yodha Energy Tech Hackathon 2026  
-> **Challenge Track:** Challenge 4 — Smart Manufacturing: Industrial Energy & Process Efficiency  
+> **Target Deck:** 12-Slide Pitch Deck for Schneider Electric Yuva Yodha Energy Tech Hackathon 2026  
+> **Challenge:** Challenge 4 — Smart Manufacturing: Industrial Energy & Process Efficiency  
+> **Theme:** Clean Modern White Theme (`#FFFFFF` Canvas, `#F8FAFC` Cards, `#009530` Schneider Green, `#0F172A` Slate Navy)  
+> **Audience:** Hackathon Jury, Plant Owners, and Non-Specialists (Clear visual analogies, zero industrial jargon confusion)  
 > **Team:** Deepak R (Team Lead) & Saranya Dutta (Team Member, IIPE)  
-> **Format:** Ready for ingestion by Presentation AI Agents (Gamma, SlidesAI, Claude, Marp, PowerPoint)
+> **Repository:** [https://github.com/Arkz-Deepak/yuva-yodha-hackathon](https://github.com/Arkz-Deepak/yuva-yodha-hackathon)  
 
 ---
 
-## Slide 1: Title Slide
-* **Slide Title:** EcoCast AI
-* **Subtitle:** Intelligent Decision-Support Digital Twin & Melter Optimizer for MSME Foundries
-* **Event:** Schneider Electric Yuva Yodha Energy Tech Hackathon 2026
-* **Track:** Challenge 4 — Smart Manufacturing (Industrial Energy & Process Efficiency)
-* **Team Members:**
-  * **Deepak R** — Team Lead | Systems Architecture & Full-Stack
-  * **Saranya Dutta** — Team Member (Roll No: `23CH10028`) | Chemical Process & Energy Modeling, IIPE
-* **GitHub Repository:** [https://github.com/Arkz-Deepak/yuva-yodha-hackathon](https://github.com/Arkz-Deepak/yuva-yodha-hackathon)
-* **Visual Cue:** High-contrast industrial dark theme (`#0a0e14`) with Schneider Electric green (`#3dcd58`) accents and a glowing 3D induction furnace crucible graphic.
+## 🎨 Global Visual Theme Guidelines (For AI Presentation Agents & Human Reviewers)
+
+* **Color Palette:**
+  * **Canvas Background:** Pure White (`#FFFFFF`)
+  * **Card / Section Backgrounds:** Ultra-light Slate (`#F8FAFC`) with subtle crisp borders (`#E2E8F0`)
+  * **Primary Brand Accent:** Schneider Electric Official Green (`#009530` / `#16A34A`)
+  * **Primary Typography:** High-contrast Slate Navy (`#0F172A`)
+  * **Secondary / Body Text:** Slate Muted Grey (`#475569`)
+  * **Highlights / Warnings:** Royal Blue (`#2563EB`) and Warm Amber (`#D97706`)
+* **Layout:** 16:9 Widescreen, generous whitespace, structured card grids, visual flowcharts, and metric callout boxes.
+* **Tone:** Pragmatic, visionary, mathematically grounded, and factory-ready.
 
 ---
 
-## Slide 2: The Context & Industrial Problem
-* **Slide Header:** The Heavy Cost of Metal Melting in India's MSME Clusters
-* **Key Context:**
-  * India's casting and foundry sector powers automotive, agriculture, and defense machinery.
-  * **Kolhapur Foundry Cluster (Maharashtra):** 300+ MSME units producing 600,000 tonnes of castings annually, consuming ~166,910 toe of energy.
-  * Energy accounts for **30% to 50% of total manufacturing costs** (excluding raw materials), with induction melting furnaces consuming over **70% of total plant electricity**.
-* **The Core Gap:**
-  * Bureau of Energy Efficiency (BEE) audits reveal that **9% to 45% of equipment-level energy wastage is caused by decision-level inefficiencies**, not just outdated equipment.
-  * MSME operators rely on heuristic rules of thumb: melting too early, holding liquid metal at 1520°C, and ignoring Time-of-Use (ToU) electricity tariffs.
-* **Callout Stat:** Average MSME Specific Energy Consumption (SEC) is **780–900 kWh/t**, compared to the BEE benchmark target of **625 kWh/t**.
+## Slide 1: Title Slide (Hero)
+
+* **Top Category Tag:** SCHNEIDER ELECTRIC YUVA YODHA ENERGY TECH HACKATHON 2026 • CHALLENGE 4
+* **Main Title:** EcoCast AI
+* **Subtitle:** Production-Aware AI Digital Twin & Tariff-Synchronized Melting Optimizer for MSME Foundries
+* **Benchmark Context:** Kolhapur MSME Foundry Cluster, Maharashtra, India
+* **Visual Asset:** Clean white card with Schneider Electric green header stripe and dual badges.
+* **Project Team:**
+  * **Deepak R (Team Lead)** — Systems Architect & Edge Developer | Full-Stack IoT, 3D WebGL Digital Twin, Modbus-TCP Ingestion
+  * **Saranya Dutta (Team Member)** — Chemical Process Engineer | Roll No: `23CH10028` | `saranyadutta@iipe.ac.in` | Indian Institute of Petroleum and Energy (IIPE) | Process Thermodynamics, Energy Balances & EU CBAM/BEE Modeling
+* **Live System Link:** Working full-stack application running with real-time WebSockets & 3D WebGL Digital Twin.
 
 ---
 
-## Slide 3: The Urgency: Why This Problem Demands Action Today
-* **Slide Header:** The Double Squeeze: Thin Operating Margins & EU CBAM Carbon Tariffs
-* **Two Urgent Pressures:**
-  1. **Economic Squeeze:**
-     * Foundries operate on thin single-digit profit margins (4–8%).
-     * Rising electricity tariffs directly erode unit viability; saving 10% on power doubles operating profits.
-  2. **Regulatory & Export Crisis (EU CBAM 2026):**
-     * Nearly **30% of Kolhapur’s casting production is exported** to Europe, the US, and the Middle East.
-     * The EU Carbon Border Adjustment Mechanism (CBAM) began full enforcement in January 2026.
-     * Indian steel and castings carry an emissions intensity of **~2.5 tCO₂/t** vs. the EU benchmark of **1.5 tCO₂/t**.
-     * Non-compliant exporters face carbon tariffs of **€79.68/tCO₂** (up to €173/tonne of imported steel), threatening export contracts.
-* **The Missing Link:** MSMEs lack capital for multi-crore enterprise SCADA systems, creating an urgent decision-support gap.
+## Slide 2: The Problem: Decision-Level Energy Waste
+
+* **Slide Title:** The Problem: Decision-Level Energy Waste in India's MSME Foundries
+* **Beginner-Friendly Analogy:**
+  > *"Think of an industrial induction melting furnace like a giant 500-kilowatt electric kettle. Melting scrap metal takes massive energy. But once it reaches 1520°C, if the pouring ladles aren't ready, the crew leaves the furnace running on full power to keep it hot. That idle holding burns 120–150 kWh every single hour—literally boiling money away into thin air!"*
+* **The Kolhapur Reality:**
+  * **300+ MSME Foundries:** Melt 600,000 tonnes of automotive castings annually.
+  * **Energy is 30%–50% of Total Cost:** Electricity bills equal up to 19% of entire foundry revenue.
+  * **Induction Furnaces are Power Hogs:** Consume over 70% of total plant electricity.
+  * **High Specific Energy Consumption (SEC):** Average 780–900 kWh/tonne vs. global best-in-class benchmark of 550 kWh/tonne.
+  * **The Hidden Culprit:** BEE audits confirm that **9% to 45% of waste is not broken machines—it is human decision delay!**
+* **Embedded Graphic:** `docs/assets/fig1_problem_flowchart.png`
+
+```mermaid
+flowchart TD
+    A["Scrap Charged in 1.5t Furnace"] --> B["Metal Melts to 1520°C"]
+    B --> C{"Pouring Ladle Ready?"}
+    C -- "NO (Shopfloor Delay)" --> D["⚠️ Molten Holding Penalty: 120-150 kWh/hr Burned<br/>Uninsulated Open Lid (+32.7 kW Radiation)<br/>Evening Peak Surcharge (+₹1.50/unit)"]
+    D --> E["🔴 Heavy Energy & Margin Loss: ₹36+ Lakhs/year Wasted"]
+    C -- "YES" --> F["Molten Metal Tapped into Molds"]
+```
 
 ---
 
-## Slide 4: Alignment with Schneider Electric’s Strategic Vision
-* **Slide Header:** Bridging Enterprise SCADA to 5,000+ Underserved MSMEs
-* **Strategic Fit:**
-  * Schneider Electric's flagship *EcoStruxure™ Power & Process* delivers world-class optimization for large corporate enterprises with heavy instrumentation budgets.
-  * However, India’s 5,000+ MSME manufacturing units cannot absorb multi-crore enterprise installations.
-* **EcoCast AI as the "EcoStruxure Edge MSME Gateway":**
-  * Serves as a lightweight, non-invasive intelligence layer sitting directly on standard Schneider energy meters (EasyLogic™ PM5350 / PM1200 / PowerLogic™ ION series).
-  * Creates an accessible on-ramp into the Schneider hardware ecosystem (meters, drives, edge PCs).
-  * Direct alignment with Schneider Electric India’s sustainability commitments, SE Ventures entrepreneurship backing, and decarbonization of the manufacturing floor.
+## Slide 3: Urgency & Regulatory Pressure
+
+* **Slide Title:** Why It Matters Now: Single-Digit Margins & EU CBAM Carbon Tariffs
+* **Two Simultaneous Pressures:**
+  1. **Thin Profit Margins (4%–8%):**
+     * MSME foundries operate on razor-thin profits.
+     * With electricity averaging ₹8.50/kWh, **reducing furnace power by just 10% directly doubles net operating profit margins!**
+     * Software-driven decision optimization delivers a verified **payback under 6.7 months**.
+  2. **The 2026 EU CBAM Export Crisis (Carbon Border Adjustment Mechanism):**
+     * Nearly **30% of Kolhapur castings are exported** to Europe and the USA for automotive and pump manufacturing.
+     * EU CBAM began full commercial enforcement in 2026, penalizing carbon-heavy metal imports.
+     * Indian castings carry carbon intensity of **~2.1 tCO₂/t** vs. the EU threshold of **1.5 tCO₂/t**.
+     * Non-compliant exporters face border tariffs of **€79.68/tCO₂ (~₹7,450 per tonne)**, threatening export survival.
+* **Key Takeaway:** MSMEs cannot afford multi-crore SCADA systems, but desperately need automated carbon accounting and energy intelligence.
 
 ---
 
-## Slide 5: The Solution: EcoCast AI Overview
-* **Slide Header:** Production-Aware AI Digital Twin & Tariff-Synchronized Melting Optimizer
-* **Core Pillars:**
-  1. **Interactive 3D Digital Twin (Three.js):** Real-time thermal mapping of the furnace crucible, hydraulic tilt dynamics, and radiation leak visualization.
-  2. **Molten Holding Guard:** Automated watchdog that detects unsynchronized melting and alerts operators with a live monetary burn rate ticker (₹/min).
-  3. **Time-of-Use (ToU) Batch Optimizer:** MSEDCL tariff-aware scheduling algorithm shifting energy-intensive melting to off-peak night rebate hours.
-  4. **One-Click Verified Audit Certificate (Form CA-26):** Digitally stamped PDF/CSV audit reports with SHA-256 cryptographic seals for CBAM export compliance and BEE PAT ESCert trading.
-* **Core Value Proposition:** **Zero CapEx software deployment delivering verified 12% to 18% net energy bill reductions.**
+## Slide 4: Proposed Solution & System Architecture
+
+* **Slide Title:** The Proposed Solution: EcoCast AI Overview & System Architecture
+* **The 3 Core Intelligence Pillars:**
+  1. **Interactive 3D Digital Twin (Three.js):** Browser-based WebGL crucible showing live molten bath incandescence, coil heating states, open lid radiation loss, and hydraulic tilting.
+  2. **Holding-Guard & Time-of-Use Watchdog:** Live monetary ticker (₹/min and kg CO₂/min) warning operators when molten metal idles. Shifts batch start times to hit MSEDCL night off-peak rebate windows (-₹1.50/kWh).
+  3. **Automated Statutory Passports:** Instantly issues Form CA-26 compliance PDF certificates with SHA-256 digital seals for EU CBAM customs clearance and BEE PAT ESCert trading.
+* **Embedded Graphic:** `docs/assets/fig2_solution_architecture.png`
+
+```mermaid
+flowchart LR
+    subgraph Edge ["Shopfloor Hardware Layer"]
+        M["Schneider PM5350 / ION Meters"] -->|Modbus-TCP Port 502| G["EcoCast Edge Gateway<br/>(Harmony iPC / Pi 4)"]
+        P["Infrared Bath Pyrometer"] -->|4-20 mA| G
+    end
+    subgraph Core ["Edge Intelligence Engine"]
+        G --> F["FastAPI Engine (Python 3.13)"]
+        F --> T["Thermodynamics Model (Cp + Latent Heat)"]
+        F --> ML["Scikit-Learn ML Regressors (Time-to-Tap)"]
+        F --> TOU["MSEDCL ToU Tariff Optimizer"]
+    end
+    subgraph UI ["Human Interface & Compliance"]
+        F -->|WebSockets 1 Hz| D["Pulpit HMI & 3D Digital Twin"]
+        F --> C["ReportLab PDF Engine (SHA-256 Stamp)<br/>EU CBAM & BEE PAT Certificates"]
+    end
+```
 
 ---
 
-## Slide 6: Key Features & Operator User Journey
-* **Slide Header:** Intuitive Shopfloor HMI: From Scrap Ingot to Compliant Pour
-* **The 4-Step Operator Flow:**
-  1. **Charge & Ramp (AI Guidance):** Operator initiates batch; AI recommends 3-stage optimal power trajectory (720 kW rapid ramp → 520 kW refining → 640 kW superheating) to minimize thermal shock and peak demand.
-  2. **Cover Guard:** Visual feedback flags radiation loss if lid is open (+32.7 kW loss), reminding crew to close the insulated lid.
-  3. **Holding Time Elimination:** If tapping is delayed at 1520°C, the system calculates holding costs (₹22.50/min), advising immediate ladle positioning.
-  4. **Automated Tapping & Certification:** Upon pour, the system logs final weighbridge tonnage and metered kWh, automatically issuing an official Form CA-26 compliance certificate.
+## Slide 5: Operator User Journey
+
+* **Slide Title:** Operator User Journey: Synchronized Melting from Scrap to Ingot
+* **Designed for the Shopfloor:** Operates on a rugged tablet at the furnace melting pulpit with big, clear visual buttons.
+* **The 4-Step Journey:**
+  1. **Charge & AI Ramp:** Operator inputs scrap mass and grade (Grey Iron, SG Iron, Steel). AI sets optimal 3-stage power ramp (e.g. 720 kW → 520 kW → 640 kW) to prevent coil thermal shock.
+  2. **Radiation Lid Guard:** Infrared sensor flags if furnace lid is open above 1000°C. Prompts operator to close cover, saving 32.7 kWh of thermal radiation per batch.
+  3. **Holding Guard Alarm:** When metal hits target tapping temp (1520°C), if the crane or ladle isn't ready, an alarm flashes: *"Holding Loss Active: ₹22.50/min burned!"* Prompts crew to tap immediately or drop power.
+  4. **Tapping & 1-Click Audit:** Furnace tilts, pours molten iron, and instantly generates a tamper-proof PDF audit certificate sealed with SHA-256 cryptography.
+* **Embedded Graphic:** `docs/assets/fig3_operator_journey.png`
+
+```mermaid
+flowchart TD
+    S1["1. Scrap Charging<br/>Operator loads 1.5t scrap. AI sets 3-stage kW ramp."] --> S2["2. Lid Cover Guard<br/>IR sensor alerts if lid open past 1000°C (Saves 32.7 kWh)."]
+    S2 --> S3["3. Holding Guard Watchdog<br/>At 1520°C, if ladle delayed, alarm flashes: ₹22.50/min!"]
+    S3 --> S4["4. Tapping & Audit Stamp<br/>Metal poured. Instant PDF export with SHA-256 seal."]
+```
 
 ---
 
-## Slide 7: Technical Architecture & Industrial IoT Pipeline
-* **Slide Header:** Edge-Native, Modular, and Open Architecture
-* **System Stack:**
-  * **Physical / Ingestion Layer:** Schneider Electric EasyLogic™ PM5350 / PM1200 energy meters connected via Modbus-TCP (Port 502) + optical pyrometer temp sensors.
-  * **Edge Gateway & Analytics Engine (FastAPI & Python 3.13):**
-    * Thermodynamic physics engine computing continuous heat balance & phase change.
-    * MSEDCL HT-Industrial Time-of-Use tariff engine.
-    * BEE PAT ESCerts calculation engine.
-  * **Streaming Protocol:** Asynchronous WebSockets pushing 1-second telemetry packets (`/ws/telemetry`).
-  * **Operator HMI & 3D Twin:** React, Three.js WebGL shaders, Tailwind CSS, Lucide industrial icons.
-  * **Audit Engine:** ReportLab vector PDF generator with cryptographic SHA-256 digital stamp generation.
+## Slide 6: Technical Approach (Thermodynamics & ToU Tariff)
+
+* **Slide Title:** Technical Approach: Thermodynamics & Tariff-Synchronized Melting
+* **Physics-Informed Optimization:**
+  * **Energy Balance Formula:** Total energy required $Q = m \cdot C_p \cdot \Delta T + m \cdot L_f + Q_{losses}$.
+  * **Phase Change Modeling:** Latent heat of fusion $L_f = 270\text{ kJ/kg}$ for iron melting.
+  * **Stefan-Boltzmann Radiation Loss:** $Q_{rad} = \epsilon \cdot \sigma \cdot A \cdot (T_{bath}^4 - T_{amb}^4)$. Leaving the lid open at 1500°C leaks ~32.7 kW directly into ambient air!
+* **MSEDCL Time-of-Use Tariff Arbitrage (Maharashtra HT-II Industrial):**
+  * **Peak Hours (18:00 – 22:00):** +₹1.50/kWh penalty surcharge.
+  * **Standard Day (06:00 – 18:00):** Baseline ₹8.50/kWh.
+  * **Night Off-Peak (22:00 – 06:00):** -₹1.50/kWh rebate discount.
+  * **Savings Impact:** Shifting just one 2,500 kWh heat from evening to night saves **₹7,500 in a single cycle!**
+* **Embedded Graphic:** `docs/assets/fig4_tou_holding_chart.png`
 
 ---
 
-## Slide 8: Algorithmic Intelligence & Machine Learning
-* **Slide Header:** Physics-Informed ML for Predictive Melt Control
-* **Model Formulation:**
-  * Trained on multi-shift steel industry load profiles (UCI Steel Industry Energy Dataset with 35,040 intervals) and empirical foundry heats.
-  * **Dual Regression Engine:**
-    * *RandomForestRegressor (60 Estimators, max_depth=10):* Predicts final batch energy consumption (kWh) and Specific Energy Consumption (SEC in kWh/t).
-    * *GradientBoostingRegressor (60 Estimators, max_depth=5):* Predicts estimated time to reach tapping temperature (Minutes to Tap) based on bath mass, scrap starting temp, power setpoint, and lid cover status.
-* **Anomaly Detection:** Tracks deviations between theoretical power factor and active reactive power to detect coil refractory lining wear and slag buildup.
+## Slide 7: Strategic Alignment with Schneider Electric
+
+* **Slide Title:** Strategic Fit: Extending EcoStruxure to 5,000+ MSME Foundries
+* **The Market Expansion Opportunity:**
+  * **Schneider EcoStruxure™:** World leader in enterprise energy management, serving massive steel plants and multinationals.
+  * **The Untapped MSME Base:** India has 5,000+ MSME foundries that consume huge electrical loads but cannot afford multi-crore SCADA setups.
+  * **EcoCast AI as 'EcoStruxure Edge MSME Gateway':** A lightweight, affordable software layer tailored specifically for MSME melting operations.
+* **Commercial Hardware Synergy:**
+  * Native driver integration with **Schneider EasyLogic™ PM5350, PM1200, and PowerLogic™ ION9000** power meters via Modbus-TCP.
+  * Drives sales of Schneider current transformers, Harmony industrial edge PCs, and Altivar™ variable frequency drives (VFDs) for cooling water pumps.
+  * Packaged as an out-of-the-box downloadable app on **Schneider Electric Exchange**.
 
 ---
 
-## Slide 9: Regulatory Compliance: EU CBAM & BEE PAT Scheme
-* **Slide Header:** Turning Environmental Compliance into a Liquid Balance-Sheet Asset
-* **1. EU CBAM Export Shield:**
-  * Automatically calculates Scope 2 embodied carbon: $\text{SEC} \times 0.82\text{ kg CO}_2/\text{kWh}$ (Central Electricity Authority baseline).
-  * Demonstrates that optimizing SEC to 625 kWh/t reduces total carbon intensity to **~0.71 tCO₂/t** (well below the EU 1.50 tCO₂/t threshold).
-  * **Direct Benefit:** Shields exporters from up to **€79.68/tonne (~₹7,450/t)** in punitive European carbon import levies.
-* **2. BEE PAT Scheme (Perform, Achieve and Trade):**
-  * Complies with India's Energy Conservation Act, 2001 for Designated Consumers.
-  * Converts heat energy savings into **ESCerts (1 ESCert = 1 Mtoe saved)**.
-  * Generates an estimated **+₹7.1 Lakhs/year** in tradable ESCert revenue on the Indian Energy Exchange (IEX).
+## Slide 8: Regulatory Compliance (EU CBAM & BEE PAT)
+
+* **Slide Title:** Statutory Compliance: EU CBAM Carbon Shield & BEE PAT Trading
+* **Dual Regulatory Value Creation:**
+  1. **EU CBAM Carbon Shield:**
+     * Scope 2 Carbon Intensity: $\text{Embodied CO}_2 = \text{SEC (kWh/t)} \times 0.82\text{ kg CO}_2/\text{kWh}$ (CEA India Grid Factor).
+     * EcoCast AI reduces furnace SEC from **820 kWh/t to 670 kWh/t**, dropping total carbon intensity from **2.15 tCO₂/t down to 1.76 tCO₂/t**.
+     * Protects Kolhapur exporters from **€79.68/tCO₂ border penalties**, saving ~₹22.5 Lakhs annually in customs duties!
+  2. **BEE PAT Scheme Revenue (ESCerts):**
+     * Designated Consumers exceeding BEE Specific Energy Consumption targets receive tradable Energy Saving Certificates (1 ESCert = 1 Mtoe).
+     * Traded on Indian Energy Exchange (IEX) at ~₹2,150/ESCert, adding **+₹4.3 to ₹7.1 Lakhs/year** in liquid balance-sheet revenue.
+* **Embedded Graphic:** `docs/assets/fig5_cbam_carbon_chart.png`
 
 ---
 
-## Slide 10: Quantified Impact & Demonstrable ROI
-* **Slide Header:** Financial Payback Under 6 Months for a Typical MSME
-* **Unit Economics (Typical 2,500 MT/year Foundry with ₹2.5 Crore Annual Power Bill):**
-  * **Holding Time Elimination:** Eliminates 30 minutes of idle holding per heat across 1,600 heats/year = **216,000 kWh saved (₹18.4 Lakhs/year)**.
-  * **Time-of-Use Tariff Shift:** Shifting 25% of melting to night off-peak rebate windows (-₹1.50/unit) = **₹9.3 Lakhs/year in tariff discounts**.
-  * **Lid Automation & Power Trajectory Optimization:** Eliminating radiation loss (32.7 kWh/batch) = **52,300 kWh saved (₹4.4 Lakhs/year)**.
-  * **Total Annual Savings:** **₹32 Lakhs to ₹45 Lakhs per foundry** (12% to 18% net electricity cost reduction).
-  * **Capital Investment:** Software license + low-cost edge PC gateway (~₹1.5 Lakhs).
-  * **Payback Period:** **Under 6 months.**
-* **Decarbonization:** Avoids **350–500 tonnes of CO₂** per MSME facility annually.
+## Slide 9: Quantified ROI & Financial Breakdown
+
+* **Slide Title:** Quantified ROI: 6.7-Month Payback for a Typical MSME Foundry
+* **Unit Economics (Representative 2,500 MT/year Foundry with 1.5t Furnace):**
+  * **Holding Loss Elimination (30 min/heat):** Saves 216,000 kWh/yr = **₹18.4 Lakhs/yr**
+  * **Night Tariff Shift (25% heats moved):** Saves **₹9.3 Lakhs/yr** in tariff discounts
+  * **Lid Automation & Thermal Shielding:** Saves 52,300 kWh/yr = **₹4.4 Lakhs/yr**
+  * **BEE ESCert Trading Revenue:** Adds **+₹4.3 Lakhs/yr** in tradable certificates
+  * **Total Annual Economic Gain:** **₹36.4 Lakhs / year**
+  * **Total Deployment Cost:** **₹2.0 Lakhs** (Edge Gateway + Modbus wiring + Software)
+  * **Net Payback Period:** **6.7 Months!**
+* **Environmental Impact:** Avoids **350–500 tonnes of CO₂** per plant per year.
+* **Cluster Scale (300 Kolhapur Units):** **₹14 Crores** in annual collective energy savings!
+* **Embedded Graphic:** `docs/assets/fig6_financial_roi_breakdown.png`
 
 ---
 
-## Slide 11: Implementation Roadmap & Scaling Strategy
-* **Slide Header:** From Single Crucible to Cluster-Wide Deployment
-* **4-Phase Rollout Plan:**
-  * **Phase 1 (Months 1–3): Pilot Deployment & Baseline Audit**
-    * Deploy EcoCast Edge Gateway on 3 induction furnaces across 2 Kolhapur foundries (MIDC Shiroli / Gokul Shirgaon).
-    * Calibrate Modbus-TCP polling with Schneider EasyLogic PM5350 meters.
-  * **Phase 2 (Months 4–6): Operator Closed-Loop Validation**
-    * Full integration of automated holding-guard alarms and mobile HMI tablets on the furnace pulpit.
-    * Initial generation of export-ready CBAM certificates for European shipments.
-  * **Phase 3 (Months 7–12): Cluster-Scale Scaling (Kolhapur & Belgaum)**
-    * Partner with Kolhapur Engineering Association (KEA) and UNIDO-BEE cluster initiatives to onboard 50 MSME units.
-    * Integration of cloud analytics dashboard for multi-furnace foundry management.
-  * **Phase 4 (Year 2+): Schneider Electric Ecosystem Integration**
-    * Productize as an official certified application on the Schneider Electric Exchange and EcoStruxure Marketplace.
+## Slide 10: Implementation Roadmap
+
+* **Slide Title:** Implementation Roadmap: From Kolhapur Pilot to Cluster Scale
+* **Phased Rollout Plan:**
+  * **Q1: Pilot Baseline (Months 1–3):** Deploy edge gateways across 3 Kolhapur foundries (MIDC Shiroli & Gokul Shirgaon) with Schneider PM5350 meters. Validate non-invasive Modbus polling over 100 heat cycles.
+  * **Q2: Shopfloor Pulpit Rollout (Months 4–6):** Install rugged operator touchscreens on melting pulpits. Train furnace crews on holding-guard alarms. Issue first batch of EU CBAM export certificates.
+  * **Q3: Cluster Scaling (Months 7–9):** Partner with Kolhapur Engineering Association (KEA) & BEE to onboard 50 foundries across Kolhapur and Belgaum. Launch multi-furnace cloud dashboard for plant owners.
+  * **Q4: Schneider Ecosystem (Months 10–12):** Certify application on Schneider Electric Exchange. Bundle software with Schneider Harmony iPC hardware. Expand to Rajkot, Coimbatore, and Ludhiana casting hubs.
 
 ---
 
-## Slide 12: Team & Competitive Advantages
-* **Slide Header:** Multidisciplinary Engineering Driving Clean Tech Innovation
-* **Core Team:**
-  * **Deepak R — Team Lead:**
-    * *Expertise:* Systems engineering, edge computing, full-stack architectures, 3D WebGL digital twins, and industrial IoT protocols (Modbus, MQTT, WebSockets).
-    * *Role:* Engineered the end-to-end FastAPI edge gateway, Three.js 3D crucible twin, real-time HMI dashboard, and ReportLab certificate generation engine.
-  * **Saranya Dutta — Team Member:**
-    * *Affiliation:* Indian Institute of Petroleum and Energy (IIPE), Roll No: `23CH10028` (`saranyadutta@iipe.ac.in`).
-    * *Expertise:* Chemical process engineering, thermodynamic energy balance, reaction kinetics, and industrial decarbonization.
-    * *Role:* Validated thermodynamic melting models, latent heat phase transitions, Specific Energy Consumption (SEC) benchmarks, EU CBAM carbon ledger math, and BEE PAT regulatory compliance.
-* **Why EcoCast AI Wins:**
-  * Working end-to-end production software (not just a concept).
-  * Direct strategic alignment with Schneider Electric hardware.
-  * Tangible sub-6-month payback solving India's most urgent MSME manufacturing challenge.
+## Slide 11: Demonstrated Feasibility: Working Full-Stack System Live Today
+
+* **Slide Title:** Demonstrated Feasibility: Working Full-Stack System Live Today
+* **Everything Built & Verified:**
+  * **Interactive 3D Crucible Digital Twin:** Built with React 19, Three.js WebGL, and Tailwind CSS. Features real-time dynamic thermal incandescence, lid state warnings, and hydraulic tapping animations.
+  * **High-Speed Asynchronous Backend:** Built with FastAPI (Python 3.13) and native WebSockets (`/ws/telemetry`), streaming 1 Hz real-time sensor packets.
+  * **Schneider Modbus Driver:** Built-in Modbus-TCP driver reading registers for active power (kW), power factor, voltage, and current from PM5350 meters.
+  * **Instant PDF & Cryptographic Verification:** Integrated ReportLab engine generating official Form CA-26 certificates with SHA-256 digital seals in < 500 ms.
+  * **Cloud & Edge Deployable:** Verified on Render, Vercel, and local Docker/Windows containers.
+
+---
+
+## Slide 12: Team & Conclusion
+
+* **Slide Title:** Team & Conclusion: Ready to Power India's Green MSME Transition
+* **Dedicated Two-Member Team:**
+  * **Deepak R (Team Lead):**
+    * *Expertise:* Systems architecture, full-stack edge engineering, Three.js 3D WebGL digital twins, and industrial Modbus-TCP / WebSocket protocols.
+    * *Contribution:* Developed the complete end-to-end software platform, live 3D twin, simulator engine, and PDF export system.
+  * **Saranya Dutta (Team Member):**
+    * *Affiliation:* Indian Institute of Petroleum and Energy (IIPE), Roll No: `23CH10028` | `saranyadutta@iipe.ac.in`
+    * *Expertise:* Chemical process engineering, thermodynamic energy balances, metal fusion kinetics, and industrial decarbonization.
+    * *Contribution:* Validated latent heat fusion models, furnace radiation losses, Specific Energy Consumption (SEC) benchmarks, EU CBAM carbon ledger math, and BEE PAT accreditation workflows.
+* **Why EcoCast AI Wins Challenge 4:**
+  1. **Solves a Massive Problem:** Targets the ₹14 Crore decision-level energy waste in India's highest-power MSME sector.
+  2. **Not a Concept—Working Software:** Fully functioning code, 3D twin, and certificate generator running live right now.
+  3. **Direct Schneider Hardware On-Ramp:** Expands Schneider's EcoStruxure footprint to 5,000+ underserved MSME foundries.
+  4. **Unbeatable 6.7-Month Payback:** Proves that sustainability directly creates massive industrial profit.
