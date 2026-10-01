@@ -54,10 +54,10 @@ While equipment-level upgrades (like IGBT conversions) deliver value, Bureau of 
 
 ## 👥 Team & Responsibilities
 
-| Team Member | Core Focus & Responsibilities |
-| :--- | :--- |
-| **Deepak R** | **Full-Stack Architecture & 3D Digital Twin:** Built the FastAPI edge gateway, real-time WebSocket telemetry pipeline, Three.js 3D crucible twin, operator HMI dashboard, and end-to-end simulation mechanics. |
-| **Shesha Krishna** | **Domain Research & Machine Learning:** Authored the Kolhapur cluster foundry research paper, validated thermodynamic physics models, trained ML regressors on UCI Steel Industry datasets, and crafted the business case. |
+| Team Member | Details & Affiliation | Core Focus & Responsibilities |
+| :--- | :--- | :--- |
+| **Deepak R** | **Team Lead** | **Full-Stack Architecture & 3D Digital Twin:** Engineered the FastAPI edge gateway, real-time WebSocket telemetry pipeline, Three.js 3D crucible twin, operator HMI dashboard, Modbus-TCP hardware driver, and end-to-end simulation mechanics. |
+| **Saranya Dutta** | **Team Member**<br/>Roll No: `23CH10028`<br/>Email: `saranyadutta@iipe.ac.in`<br/>Indian Institute of Petroleum and Energy (IIPE) | **Chemical Process & Energy Modeling:** Validated thermodynamic melt energy balance, induction furnace phase change calculations, Specific Energy Consumption (SEC) benchmarks, EU CBAM carbon ledger modeling, and BEE PAT scheme compliance. |
 
 ---
 
