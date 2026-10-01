@@ -124,9 +124,9 @@ export default function CertificateModal({ isOpen, onClose, heatData }) {
                 <td className="p-2.5 text-emerald-400 font-semibold">CBAM EXEMPT (0 Deficit)</td>
               </tr>
               <tr className="hover:bg-slate-900/40">
-                <td className="p-2.5 font-medium text-slate-300">EU CBAM Export Shield</td>
-                <td className="p-2.5 font-bold font-mono text-emerald-400">+ €79.68 / t</td>
-                <td className="p-2.5 text-slate-400">EU ETS Price: €79.68/t</td>
+                <td className="p-2.5 font-medium text-slate-300">Export Tariff Protection</td>
+                <td className="p-2.5 font-bold font-mono text-emerald-400">+ ₹7,450 / t</td>
+                <td className="p-2.5 text-slate-400">Carbon Tariff Shield: ₹7,450/t</td>
                 <td className="p-2.5 text-emerald-400 font-bold font-mono">+ ₹7,450 / t saved</td>
               </tr>
               <tr className="hover:bg-slate-900/40">

@@ -14,7 +14,7 @@ While equipment-level upgrades (like IGBT conversions) deliver value, Bureau of 
 1. **Unsynchronized Melting & Molten Holding Waste:** Furnaces reach tapping temperature (1520°C) too early and idle for 20–60 minutes awaiting cranes or molds, burning **120–150 kWh every idle hour** in radiation and standby losses.
 2. **Time-of-Use (ToU) Blindness:** Operators melt during expensive evening peak surcharge hours (+₹1.50/unit) instead of scheduling heavy melting during off-peak night discount windows (-₹1.50/unit).
 3. **Open Crucible Radiation:** Operating without insulated covers leaks **~32.7 kWh per batch** in thermal radiation.
-4. **EU CBAM Border Tax Exposure:** With the European Union's Carbon Border Adjustment Mechanism (CBAM) active in 2026, Indian exporters emitting ~2.5 tCO₂/t face **€79–€173/tonne in import penalties**, threatening the 30% of castings Kolhapur exports.
+4. **EU CBAM Border Tax Exposure:** With the European Union's Carbon Border Adjustment Mechanism (CBAM) active in 2026, Indian exporters emitting ~2.5 tCO₂/t face **₹7,450 to ₹16,200/tonne in cross-border import penalties**, threatening the 30% of castings Kolhapur exports.
 
 **EcoCast AI** is an edge-native, lightweight decision-support digital twin engineered specifically for MSME foundries. It delivers production-aware intelligence on top of standard energy meters without requiring multi-crore SCADA overhauls.
 
@@ -56,8 +56,8 @@ While equipment-level upgrades (like IGBT conversions) deliver value, Bureau of 
 
 | Team Member | Details & Affiliation | Core Focus & Responsibilities |
 | :--- | :--- | :--- |
-| **Deepak R** | **Team Lead** | **Full-Stack Architecture & 3D Digital Twin:** Engineered the FastAPI edge gateway, real-time WebSocket telemetry pipeline, Three.js 3D crucible twin, operator HMI dashboard, Modbus-TCP hardware driver, and end-to-end simulation mechanics. |
-| **Saranya Dutta** | **Team Member**<br/>Roll No: `23CH10028`<br/>Email: `saranyadutta@iipe.ac.in`<br/>Indian Institute of Petroleum and Energy (IIPE) | **Chemical Process & Energy Modeling:** Validated thermodynamic melt energy balance, induction furnace phase change calculations, Specific Energy Consumption (SEC) benchmarks, EU CBAM carbon ledger modeling, and BEE PAT scheme compliance. |
+| **Deepak R** | **Team Lead**<br/>Indian Institute of Petroleum and Energy (IIPE) | **Full-Stack Architecture & 3D Digital Twin:** Engineered the FastAPI edge gateway, real-time WebSocket telemetry pipeline, Three.js 3D crucible twin, operator HMI dashboard, Modbus-TCP hardware driver, and end-to-end simulation mechanics. |
+| **Saranya Dutta** | **Team Member**<br/>Email: `saranyadutta@iipe.ac.in`<br/>Indian Institute of Petroleum and Energy (IIPE) | **Chemical Process & Energy Modeling:** Validated thermodynamic melt energy balance, induction furnace phase change calculations, Specific Energy Consumption (SEC) benchmarks, EU CBAM carbon ledger modeling, and BEE PAT scheme compliance. |
 
 ---
 

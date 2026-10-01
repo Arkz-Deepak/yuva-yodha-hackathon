@@ -49,11 +49,11 @@ export default function CBAMLedgerCard({ cbamData }) {
           </div>
 
           <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
-            <span className="text-[10px] uppercase font-mono text-slate-400">CBAM Duty Liability</span>
+            <span className="text-[10px] uppercase font-mono text-slate-400">Export Carbon Tariff Risk</span>
             <div className="text-xl font-bold font-mono text-amber-400 mt-0.5">
-              €{cbam.cbam_duty_liability_eur_per_t?.toFixed(1)} <span className="text-xs font-normal text-slate-400">/ tonne</span>
+              ₹{cbam.cbam_duty_liability_inr_per_t?.toFixed(0)} <span className="text-xs font-normal text-slate-400">/ tonne</span>
             </div>
-            <span className="text-[11px] text-slate-500">₹{cbam.cbam_duty_liability_inr_per_t?.toFixed(0)} / t exported</span>
+            <span className="text-[11px] text-slate-500">Unmitigated Tariff Penalty</span>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function CBAMLedgerCard({ cbamData }) {
           </span>
         </div>
         <p className="text-[11px] text-slate-400 mt-1">
-          Eliminating holding time & optimizing SEC safeguards Kolhapur exports against €80/t EU border carbon duties.
+          Eliminating holding time & optimizing SEC safeguards Kolhapur exports against ₹7,450/t cross-border carbon duties.
         </p>
       </div>
     </div>

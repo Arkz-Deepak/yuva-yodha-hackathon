@@ -167,14 +167,14 @@ def create_presentation(output_path="docs/EcoCast_AI_Yuva_Yodha_Presentation.ppt
     p_th.font.color.rgb = COLOR_SE_GREEN
 
     p_t1 = team_tf.add_paragraph()
-    p_t1.text = "• Deepak R (Team Lead) — Systems Architect & Edge Developer | Full-Stack IoT, 3D Digital Twin, Modbus-TCP Ingestion"
+    p_t1.text = "• Deepak R (Team Lead) — Systems Architect & Edge Developer | Indian Institute of Petroleum and Energy (IIPE)"
     p_t1.font.size = Pt(12)
     p_t1.font.bold = True
     p_t1.font.color.rgb = COLOR_TEXT_PRIMARY
     p_t1.space_before = Pt(4)
 
     p_t2 = team_tf.add_paragraph()
-    p_t2.text = "• Saranya Dutta (Team Member) — Chemical Process Engineer | Roll: 23CH10028 | saranyadutta@iipe.ac.in | Thermodynamics, Energy Balances & EU CBAM/BEE Modeling"
+    p_t2.text = "• Saranya Dutta (Team Member) — Chemical Process Engineer | saranyadutta@iipe.ac.in | Indian Institute of Petroleum and Energy (IIPE)"
     p_t2.font.size = Pt(12)
     p_t2.font.bold = True
     p_t2.font.color.rgb = COLOR_TEXT_PRIMARY
@@ -220,7 +220,7 @@ def create_presentation(output_path="docs/EcoCast_AI_Yuva_Yodha_Presentation.ppt
                  "Export Dependency: Nearly 30% of Kolhapur's precision castings are exported to the European Union and USA.",
                  "Full CBAM Enforcement in 2026: European buyers must pay carbon penalties on high-emission imported steel and iron.",
                  "Indian Carbon Gap: Average Indian casting emits ~2.1 tCO2/t, far exceeding the EU 1.50 tCO2/t benchmark.",
-                 "Direct Penalty Risk: Without verifiable carbon audits, Indian MSMEs face up to €79.68/tCO2 in tariffs (~₹7,450 per tonne).",
+                 "Direct Penalty Risk: Without verifiable carbon audits, Indian MSMEs face cross-border carbon tariffs of ₹7,450 per tonne (~₹22.5 Lakhs/year).",
                  "Immediate Need: Automated, certified Scope 2 carbon passports are now mandatory for survival."
              ], badge_text="Global Market Access Risk", border_color=COLOR_ACCENT_BLUE)
 
@@ -421,11 +421,11 @@ def create_presentation(output_path="docs/EcoCast_AI_Yuva_Yodha_Presentation.ppt
     add_card(slide12, Inches(0.8), Inches(1.6), Inches(5.7), Inches(5.3),
              "Project Team (IIPE)", [
                  "Deepak R (Team Lead):",
+                 "  • Indian Institute of Petroleum and Energy (IIPE).",
                  "  • Systems architecture, full-stack edge computing, and Three.js 3D WebGL digital twin engineering.",
                  "  • Industrial Modbus-TCP / MQTT protocol integration and real-time WebSocket pipelines.",
                  "Saranya Dutta (Team Member):",
-                 "  • Chemical Engineering, Indian Institute of Petroleum and Energy (IIPE).",
-                 "  • Student Roll No: 23CH10028 | saranyadutta@iipe.ac.in",
+                 "  • Chemical Engineering, Indian Institute of Petroleum and Energy (IIPE) | saranyadutta@iipe.ac.in",
                  "  • Process thermodynamics, metal fusion heat balances, SEC energy benchmarking, and EU CBAM/BEE statutory compliance modeling."
              ], badge_text="Domain-Engineered Capabilities")
 

@@ -31,8 +31,8 @@
 * **Benchmark Context:** Kolhapur MSME Foundry Cluster, Maharashtra, India
 * **Visual Asset:** Clean white card with Schneider Electric green header stripe and dual badges.
 * **Project Team:**
-  * **Deepak R (Team Lead)** — Systems Architect & Edge Developer | Full-Stack IoT, 3D WebGL Digital Twin, Modbus-TCP Ingestion
-  * **Saranya Dutta (Team Member)** — Chemical Process Engineer | Roll No: `23CH10028` | `saranyadutta@iipe.ac.in` | Indian Institute of Petroleum and Energy (IIPE) | Process Thermodynamics, Energy Balances & EU CBAM/BEE Modeling
+  * **Deepak R (Team Lead)** — Systems Architect & Edge Developer | Indian Institute of Petroleum and Energy (IIPE) | Full-Stack IoT, 3D WebGL Digital Twin, Modbus-TCP Ingestion
+  * **Saranya Dutta (Team Member)** — Chemical Process Engineer | `saranyadutta@iipe.ac.in` | Indian Institute of Petroleum and Energy (IIPE) | Process Thermodynamics, Energy Balances & EU CBAM/BEE Modeling
 * **Live System Link:** Working full-stack application running with real-time WebSockets & 3D WebGL Digital Twin.
 
 ---
@@ -73,7 +73,7 @@ flowchart TD
      * Nearly **30% of Kolhapur castings are exported** to Europe and the USA for automotive and pump manufacturing.
      * EU CBAM began full commercial enforcement in 2026, penalizing carbon-heavy metal imports.
      * Indian castings carry carbon intensity of **~2.1 tCO₂/t** vs. the EU threshold of **1.5 tCO₂/t**.
-     * Non-compliant exporters face border tariffs of **€79.68/tCO₂ (~₹7,450 per tonne)**, threatening export survival.
+     * Non-compliant exporters face cross-border carbon tariffs of **₹7,450 per tonne**, threatening export survival.
 * **Key Takeaway:** MSMEs cannot afford multi-crore SCADA systems, but desperately need automated carbon accounting and energy intelligence.
 
 ---
@@ -164,7 +164,7 @@ flowchart TD
   1. **EU CBAM Carbon Shield:**
      * Scope 2 Carbon Intensity: $\text{Embodied CO}_2 = \text{SEC (kWh/t)} \times 0.82\text{ kg CO}_2/\text{kWh}$ (CEA India Grid Factor).
      * EcoCast AI reduces furnace SEC from **820 kWh/t to 670 kWh/t**, dropping total carbon intensity from **2.15 tCO₂/t down to 1.76 tCO₂/t**.
-     * Protects Kolhapur exporters from **€79.68/tCO₂ border penalties**, saving ~₹22.5 Lakhs annually in customs duties!
+     * Protects Kolhapur exporters from **₹7,450/tonne border penalties**, saving ~₹22.5 Lakhs annually in customs duties!
   2. **BEE PAT Scheme Revenue (ESCerts):**
      * Designated Consumers exceeding BEE Specific Energy Consumption targets receive tradable Energy Saving Certificates (1 ESCert = 1 Mtoe).
      * Traded on Indian Energy Exchange (IEX) at ~₹2,150/ESCert, adding **+₹4.3 to ₹7.1 Lakhs/year** in liquid balance-sheet revenue.
@@ -217,10 +217,11 @@ flowchart TD
 * **Slide Title:** Team & Conclusion: Ready to Power India's Green MSME Transition
 * **Dedicated Two-Member Team:**
   * **Deepak R (Team Lead):**
+    * *Affiliation:* Indian Institute of Petroleum and Energy (IIPE)
     * *Expertise:* Systems architecture, full-stack edge engineering, Three.js 3D WebGL digital twins, and industrial Modbus-TCP / WebSocket protocols.
     * *Contribution:* Developed the complete end-to-end software platform, live 3D twin, simulator engine, and PDF export system.
   * **Saranya Dutta (Team Member):**
-    * *Affiliation:* Indian Institute of Petroleum and Energy (IIPE), Roll No: `23CH10028` | `saranyadutta@iipe.ac.in`
+    * *Affiliation:* Indian Institute of Petroleum and Energy (IIPE) | `saranyadutta@iipe.ac.in`
     * *Expertise:* Chemical process engineering, thermodynamic energy balances, metal fusion kinetics, and industrial decarbonization.
     * *Contribution:* Validated latent heat fusion models, furnace radiation losses, Specific Energy Consumption (SEC) benchmarks, EU CBAM carbon ledger math, and BEE PAT accreditation workflows.
 * **Why EcoCast AI Wins Challenge 4:**

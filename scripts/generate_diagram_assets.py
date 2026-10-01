@@ -43,7 +43,7 @@ def generate_problem_flowchart():
         {"title": "1. Cold Scrap Loading", "desc": "1.5 MT steel scrap loaded into crucible\nNo ramp optimization", "color": COLOR_SKY, "x": 0.08},
         {"title": "2. Uncontrolled Melting", "desc": "Fixed max power regardless of ToU tariff\nOpen lid leaks 32.7 kWh radiation", "color": COLOR_AMBER, "x": 0.32},
         {"title": "3. Idle Molten Holding", "desc": "Metal ready at 1520°C but crane delayed!\nBurns 140 kW idle (₹22.50 / min wasted)", "color": COLOR_RED, "x": 0.58},
-        {"title": "4. Cost & Carbon Penalty", "desc": "SEC hits 850+ kWh/t (vs 625 target)\nFace €79.68/t EU CBAM export duty", "color": COLOR_RED, "x": 0.84}
+        {"title": "4. Cost & Carbon Penalty", "desc": "SEC hits 850+ kWh/t (vs 625 target)\nFace ₹7,450/t export carbon duty", "color": COLOR_RED, "x": 0.84}
     ]
 
     for i, s in enumerate(steps):
@@ -251,7 +251,7 @@ def generate_cbam_comparison_chart():
         ax.text(bar.get_x() + bar.get_width()/2., h + 0.08, f"{h:.2f} t", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color=COLOR_TEXT_MAIN)
 
     # Annotations
-    ax.annotate('CBAM Penalty Liability:\n+€79.68/t (~₹7,450/t duty)', xy=(1, 2.50), xytext=(0.8, 3.1),
+    ax.annotate('Carbon Tariff Liability:\n+₹7,450/t penalty duty', xy=(1, 2.50), xytext=(0.8, 3.1),
                 arrowprops=dict(arrowstyle="->", color=COLOR_RED, lw=1.5),
                 fontsize=8.5, fontweight='bold', color=COLOR_RED, bbox=dict(boxstyle="round,pad=0.3", fc="#ffffff", ec=COLOR_RED))
 
